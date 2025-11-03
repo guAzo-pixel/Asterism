@@ -58,16 +58,12 @@ header nav ul li a:hover{
 
 body{
     background-color: red;
-body {
-    background-color: #1a1a1a; /* Restaurado el color de fondo correcto */
-    color: #f0f0f0;
-    padding-top: 82px; /* Añade espacio para el header fijo. (40px font + 20px padding + 2px border + margen) */
 }
 
 /* 1. SECCIÓN Hero (parte principal)*/
 
 .hero{
-    height: 80vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,6 +82,12 @@ body {
 /* 2. SECCIÓN de la propuesta de valor*/
 
 .worth{
+    margin: 0px;
+    
+    /*Poner imagen de fondo*/
+    background-image: url("img/fondo.png");
+    background-repeat: no-repeat;
+    background-position: right;
     height: 90vh; 
     display: flex;
     justify-content: center;
@@ -95,6 +97,7 @@ body {
     padding: 0 20px; /* Espaciado para móviles */
 }
 .worth__content {
+
     max-width: 800px; /* Evita que el texto sea demasiado ancho */
 }
 .worth__title {
@@ -109,7 +112,7 @@ body {
 
 .worth__subtitle {
     font-family: "Bitcount Grid Single", system-ui;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #aaa; 
     margin-bottom: 40px;
 }
