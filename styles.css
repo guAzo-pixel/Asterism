@@ -24,40 +24,168 @@ body{
 
 /*Menu de navegación*/
 /*quitar las decoraciones de los enlaces*/
+/* --- ESTILOS GLOBALES (Móvil y Desktop) --- */
 header {
-    position: fixed; /* Fija el header en la pantalla */
-    top: 0;          /* Lo posiciona en la parte superior */
-    left: 0;         /* Lo posiciona a la izquierda */
-    width: 100%;     /* Hace que ocupe todo el ancho */
-    z-index: 100;    /* Asegura que esté por encima de otro contenido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
     font-family: "Bitcount Grid Single", system-ui;
     font-size: 40px;
     background-color: white;
-    text-align: center;
-    padding: 10px;
     border-bottom: 2px solid #000;
-    padding: 10px 0;
+    padding: 10px 0; /* Padding de escritorio por defecto */
+    box-sizing: border-box; 
 }
-ul{
-    display: flex;
-    justify-content: center; /* Añadimos esta línea para centrar los elementos */
-    
+
+.asterisco-rojo {
+    display: inline-block;
+    color: red;
+    transition: transform 0.3s ease;
+    transform-origin: 45% 50%;
 }
-li{
-    margin-left: 15px;
-    list-style-type: none;
-}
-header nav ul li a{
+
+nav a {
     text-decoration: none;
     color: black;
+    transition: color 0.3s ease;
 }
-header nav ul li a:hover{
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.692);
+
+nav a:hover {
+    color: rgb(68, 68, 68);
 }
-.asterisco-rojo{
-    color: red;
+
+/* Animación del asterisco en los links (Desktop) */
+nav a:hover .asterisco-rojo {
+    transform: rotate(90deg);
 }
+
+/* --- ESTILOS "DESKTOP-FIRST" (Por defecto) --- */
+
+/* 1. Ocultamos los controles móviles por defecto */
+#menu-toggle,
+.menu-btn {
+    display: none;
+}
+
+/* 2. Centramos la navegación de escritorio */
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. Estilizamos la lista como horizontal (Desktop) */
+header nav ul {
+    display: flex;
+    flex-direction: row; /* Horizontal */
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+    
+    /* Propiedades para la animación (necesario para que la transición funcione en ambos sentidos) */
+    /* En desktop no hacen nada, pero preparan la animación móvil */
+    max-height: 200px; /* Un valor inicial mayor que 0 */
+    opacity: 1;
+    visibility: visible;
+}
+
+header nav li {
+    margin: 0;
+    width: auto; /* Ancho automático para items horizontales */
+}
+
+nav a {
+    display: inline-block; /* Links de texto normales */
+    padding: 0;
+}
+
+
+/* --- ESTILOS RESPONSIVE (Móvil) --- */
+
+/* Se aplica si la pantalla mide 767px o menos */
+@media (max-width: 1550px) {
+
+    /* 1. Ajustamos el padding del header para el botón */
+    header {
+        padding: 10px 20px;
+    }
+
+    /* 2. Alineamos el 'nav' para que el botón vaya a la derecha */
+    header nav {
+        justify-content: flex-end;
+    }
+
+    /* 3. Mostramos el botón de menú (label) */
+    .menu-btn {
+        display: block;
+        cursor: pointer;
+        user-select: none;
+        z-index: 102; /* Asegura que esté sobre el menú (si se solapa) */
+        position: relative; /* Necesario para z-index */
+    }
+    
+    /* 4. Preparamos el asterisco del botón para la animación */
+    .menu-btn .asterisco-rojo {
+        transition: transform 0.3s ease-out;
+    }
+
+    /* 5. Ocultamos y estilizamos la lista (ul) como desplegable */
+    header nav ul {
+        /* Oculto por defecto con animación */
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden; /* Importante para que 'max-height: 0' oculte el contenido */
+        
+        /* Transición para el despliegue */
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-in, visibility 0.4s linear;
+
+        /* Estilo del menú desplegable */
+        position: absolute;
+        top: 100%; /* Justo debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        /* Apila los elementos verticalmente */
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0; /* Padding interior del menú */
+        gap: 0; /* Resetea el gap de desktop */
+    }
+
+    /* 6. Estilizamos los items (li) para que ocupen espacio */
+    header nav li {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 7. Aumentamos el área de toque de los links */
+    nav a {
+        display: block; /* Ocupa todo el 'li' */
+        padding: 10px 0;
+    }
+    
+    /* --- ESTADOS ACTIVOS (Checkbox marcado) --- */
+
+    /* 8. LA MAGIA (Rotación del asterisco) */
+    #menu-toggle:checked ~ .menu-btn .asterisco-rojo {
+        transform: rotate(90deg);
+    }
+
+    /* 9. LA MAGIA (Mostrar el menú) */
+    #menu-toggle:checked ~ ul {
+        max-height: 100vh; /* Un valor grande para permitir que se vea todo */
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 
 /* 1. SECCIÓN Hero (parte principal)*/
 
@@ -82,8 +210,6 @@ header nav ul li a:hover{
 
 .worth{
     margin: 0px;
-    
-    /*Poner imagen de fondo*/
     background-image: url("img/fondo.png");
     background-repeat: no-repeat;
     background-position: right;
@@ -93,17 +219,17 @@ header nav ul li a:hover{
     align-items: center;
     background-color: #000000; 
     text-align: center;
-    padding: 0 20px; /* Espaciado para móviles */
+    padding: 0 20px;
 }
 .worth__content {
-    max-width: 800px; /* Evita que el texto sea demasiado ancho */
+    max-width: 800px;
 }
 .worth__title {
     font-family: "Times New Roman", "Libre Baskerville" Times, serif;
     font-size: 4rem; 
     font-style: italic;
     font-weight: bold;
-    line-height: 1.2; /* Espacio entre líneas */
+    line-height: 1.2;
     margin-bottom: 20px;
     color: white;
 }
@@ -131,8 +257,8 @@ header nav ul li a:hover{
 }
 
 .worth__cta-button:hover {
-    background-color: transparent; /* Fondo transparente */
-    color: white; /* Texto blanco */
+    background-color: transparent; 
+    color: white; 
 }
 
 /* 3. SECCIÓN problema*/
@@ -151,7 +277,7 @@ header nav ul li a:hover{
         linear-gradient(35deg,#ffffff, #ff6b6b);
     background-size: 20px 20px, 100% 100%;
     animation: mover-puntos 4s linear infinite;
-    border-top: 2px solid rgb(112, 112, 112);
+    border-top: 2px solid rgb(0, 0, 0);
     /* background-image: radial-gradient(circle, rgb(255, 0, 0) 1px, transparent 1px);
     background-size: 3px 3px; /* Tamaño de cada punto */
 }
@@ -190,19 +316,23 @@ header nav ul li a:hover{
     max-width: 1200px;
 }
 
-.problem__item p{
+.problem__item__box p{
     font-family: "JetBrains Mono", monospace;
     font-weight: bold;
+    color: #2e2e2e;
 }
 .problem__item__box{
     backdrop-filter: blur(2.5px);            /* Difumina el fondo */
     -webkit-backdrop-filter: blur(2.5px);    /* Compatibilidad con Safari */
-    border: 2px solid rgb(112, 112, 112);
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
     padding: 10px;
     text-align: justify;
 }
-.problem__item__box
+.problem__item__box{
+     border: 2px solid rgb(255, 255, 255);
+}
+
 .problem__item__tittle{
     text-align: left;
     font-size: 2rem;
@@ -220,12 +350,12 @@ header nav ul li a:hover{
 
 
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
     .problem__list {
         grid-template-columns: 1fr; /* una única columna */
     }
     .hero__title {
-        font-size: 6em;
+        font-size: 5em;
     }
 
 }
