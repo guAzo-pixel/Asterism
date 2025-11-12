@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
 <header>
   <nav>
@@ -29,6 +29,7 @@
       <li><a href="aboutus.html"><span class="asterisco-rojo">*</span>Sobre Nosotros</a></li>
       <li><a href="contact.html"><span class="asterisco-rojo">*</span>Contacto</a></li>
     </ul>
+
   </nav>
 </header>
 <body>
@@ -53,24 +54,58 @@
 
   <section class="problem">
     <div class="problem__content">
-      <h2 class="problem__tittle">¿Cansado de <span class="red">YouTube</span>?</h2> 
+      <h2 class="problem__tittle" id="frase">¿Cansado de <span class="red rotating-text">YouTube</span>?</h2>
+      <script src="script.js"></script> 
       <p class="problem__subtitle">No eres el único. Os hemos preguntado y esto es lo que hemos descubierto:</p>
       <div class="problem__list">
         <div class="problem__item__box">
           <div class="problem__item__tittle"><span>"</span>Hay demasiados anuncios<span>"</span></div>
-          <div class="porcent">79.45%</div>
+          <div class="porcent" data-value="79.45">0%</div>
           <p>De los usuarios piensan que hay un exceso de anuncios en las plataformas de vídeo.</p>
         </div>
         <div class="problem__item__box">
           <div class="problem__item__tittle"><span>"</span>No controlo mis datos<span>"</span></div>
-          <div class="porcent">42.47%</div>
+          <div class="porcent"data-value="42.47">0%</div>
           <p>Están preocupados por la falta de privacidad en las plataformas.</p>
         </div>
         <div class="problem__item__box">
           <div class="problem__item__tittle"><span>"</span>Cesnsuran el contenido<span>"</span></div>
-          <div class="porcent">31.51%</div>
+          <div class="porcent" data-value="31.51">0%</div>
           <p>Frustrados por la censura y las normas poco claras.</p>
         </div>
+        <script>
+          const counters = document.querySelectorAll('.porcent');
+
+          const options = {
+            threshold: 0.5 // Se activará cuando la mitad del elemento sea visible
+          };
+
+          const animateCounter = (counter) => {
+            const target = parseFloat(counter.getAttribute('data-value'));
+            let current = 0;
+            const increment = target / 50; // Número de pasos
+            const interval = setInterval(() => {
+              current += increment;
+              if(current >= target) {
+                counter.textContent = target.toFixed(2) + '%';
+                clearInterval(interval);
+              } else {
+                counter.textContent = current.toFixed(2) + '%';
+              }
+            }, 40); // Ajusta la velocidad de la animación
+          };
+
+          const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+              if(entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target); 
+              }
+            });
+          }, options);
+
+          counters.forEach(counter => observer.observe(counter));
+        </script>
       </div>
   </section>
 

@@ -158,6 +158,7 @@ nav a {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid white;
 }
 .hero__title{
     font-family: "Times New Roman", "Tinos", "Libre Baskerville" Times, serif;
@@ -242,7 +243,7 @@ nav a {
         linear-gradient(35deg,#ffffff, #ff6b6b);
     background-size: 20px 20px, 100% 100%;
     animation: mover-puntos 4s linear infinite;
-    border-top: 2px solid rgb(0, 0, 0);
+    border-top: 2px solid rgb(255, 255, 255);
     /* background-image: radial-gradient(circle, rgb(255, 0, 0) 1px, transparent 1px);
     background-size: 3px 3px; /* Tamaño de cada punto */
 }
@@ -257,10 +258,12 @@ nav a {
     font-size: 4rem;
     color: rgb(0, 0, 0);
     font-style: italic;
+    transition: opacity 0.5s ease;
 }
 
 .red{
     color: red;
+    transition: opacity 0.5s ease;
 }
 .problem__subtitle {
     font-family: "Bitcount Grid Single", system-ui;
@@ -269,6 +272,7 @@ nav a {
     max-width: 700px;     /* Opcional: limita el ancho máximo */
     margin: 0 auto;       /* Centra horizontalmente */
     text-align: center;   /* Centra el texto */
+    color: rgb(68, 68, 68);
 
 }
 .problem__list{
@@ -297,6 +301,7 @@ nav a {
                 transform 0.3s ease, 
                 border-color 0.3s ease;
 }
+
 .problem__item__box:hover{
     border: 2px solid rgb(255, 0, 0);
     backdrop-filter: blur(8px);
@@ -326,8 +331,18 @@ nav a {
         grid-template-columns: 1fr; /* una única columna */
     }
     .hero__title {
+        margin-top: 15%;
+        
         font-size: 5em;
     }
-
+    .hero{
+        min-height: 50vh;
+    }
+    .worth__title{
+        font-size: 2.95em;
+    }
+    .problem__tittle{
+        margin-top: 10%;
+        font-size: 2.95em;
+    }
 }
-
