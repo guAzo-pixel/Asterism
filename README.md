@@ -1,4 +1,4 @@
-# Asterism
+# Asterism*
 
 **Asterism** es un proyecto intermodular del ciclo formativo de **Sistemas Microinformáticos y Redes (SMR)**.  
 Su propósito no es el desarrollo final del producto, sino la **conceptualización, análisis y diseño de implementación** de una plataforma innovadora de vídeo basada en tecnología **Web3** y **recompensas en criptomonedas**.
