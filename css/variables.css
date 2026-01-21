@@ -1,0 +1,34 @@
+:root {
+    --red-prin: #ff0000;
+    --white-prin: #ffffff;
+    --dark-prin: #000;
+    --grey-prin: #444444;
+
+    --grey-sec: #aaa;
+
+    --font-prin: "Times New Roman", "Libre Baskerville", serif;
+    --font-pixel: "Bitcount Grid Single", system-ui;
+    --font-mono:"JetBrains Mono", monospace;
+}
+.bitcount-grid-single-fontsecun {
+  font-family: var(--font-pixel);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+    width: 100%;
+    background-color: var(--red-prin);
+}
