@@ -1,0 +1,142 @@
+@import url(variables.css);
+
+
+/*Boton generico pequeño para textos cortos ej:Descubre mas*/
+.button {
+    font-family: var(--font-pixel);
+    display: inline-block; 
+    font-size: 1.2rem;
+    color: var(--dark-prin); 
+    background-color: var(--white-prin); 
+    padding: 15px 30px;
+    text-decoration: none;
+    border: 2px solid var(--white-prin);
+    border-radius: 5px;
+    transition: all 0.3s ease; 
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    background-color: transparent; 
+    color: var(--white-prin); 
+}
+
+
+/*Paneles complejos con efecto de transparencia*/
+
+.problem{
+    background-color: var(--white-prin);
+    color: var(--dark-prin);
+    font-family: var(--font-prin);
+    min-height: 90vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-image:
+        radial-gradient(circle, rgba(255, 0, 0, 1) 1px, transparent 1px),
+        linear-gradient(35deg, var(--white-prin), #ff6b6b);
+    background-size: 20px 20px, 100% 100%;
+    animation: mover-puntos 4s linear infinite;
+    border-top: 2px solid var(--white-prin);
+    /* background-image: radial-gradient(circle, rgb(255, 0, 0) 1px, transparent 1px);
+    background-size: 3px 3px; /* Tamaño de cada punto */
+}
+
+@keyframes mover-puntos {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 20px 20px, 0 0; }
+}
+.problem__tittle{
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 4rem;
+    color: var(--dark-prin);
+    font-style: italic;
+    transition: opacity 0.5s ease;
+}
+.red{
+    color: var(--red-prin);
+    transition: opacity 0.5s ease;
+}
+.problem__subtitle {
+    font-family: var(--font-pixel);
+    padding: 15px;
+    font-size: 2rem;
+    max-width: 700px;     /* Opcional: limita el ancho máximo */
+    margin: 0 auto;       /* Centra horizontalmente */
+    text-align: center;   /* Centra el texto */
+    color: var(--grey-prin);
+
+}
+.problem__list{
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    padding: 10px;
+    max-width: 1200px;
+}
+
+.problem__item__box p{
+    font-family: var(--font-mono);
+    font-weight: bold;
+    color: #252525;
+}
+.problem__item__box{
+    backdrop-filter: blur(2.5px);            /* Difumina el fondo */
+    -webkit-backdrop-filter: blur(2.5px);    /* Compatibilidad con Safari */
+    border: 2px solid var(--white-prin);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: justify;
+    transition: backdrop-filter 0.3s ease, 
+                transform 0.3s ease, 
+                border-color 0.3s ease;
+}
+
+.problem__item__box:hover{
+    border: 2px solid var(--red-prin);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: scale(1.03);
+}
+
+.problem__item__tittle{
+    text-align: left;
+    font-size: 2rem;
+    font-family: var(--font-pixel);
+    color: var(--dark-prin);
+}
+.problem__item__tittle span{
+    color: var(--red-prin);
+}
+.porcent{
+    font-family: var(--font-pixel);
+    font-size: 3rem;
+    color: var(--red-prin);
+}
+
+
+
+@media (max-width: 768px) {
+    .problem__list {
+        grid-template-columns: 1fr; /* una única columna */
+    }
+    .hero__title {
+        margin-top: 15%;
+        
+        font-size: 5em;
+    }
+    .hero{
+        min-height: 50vh;
+    }
+    .worth__title{
+        font-size: 2.95em;
+    }
+    .problem__tittle{
+        margin-top: 10%;
+        font-size: 2.95em;
+    }
+}

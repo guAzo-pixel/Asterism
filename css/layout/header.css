@@ -1,0 +1,123 @@
+@import url('../variables.css');
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    font-family: var(--font-pixel);
+    font-size: 40px;
+    background-color: var(--white-prin);
+    border-bottom: 2px solid var(--dark-prin);
+    padding: 10px 0; /* Padding de escritorio por defecto */
+    box-sizing: border-box; 
+}
+
+.asterisco-rojo {
+    display: inline-block;
+    color: var(--red-prin);
+    transition: transform 0.3s ease;
+    transform-origin: 45% 50%;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark-prin);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--grey-prin);
+}
+
+
+nav a:hover .asterisco-rojo {
+    transform: rotate(90deg);
+}
+
+#menu-toggle,
+.menu-btn {
+    display: none;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+    max-height: 200px;
+    opacity: 1;
+    visibility: visible;
+}
+
+header nav li {
+    margin: 0;
+    width: auto;
+}
+
+nav a {
+    display: inline-block; 
+    padding: 0;
+}
+
+@media (max-width: 1550px) {
+    header {
+        padding: 10px 20px;
+    }
+    header nav {
+        justify-content: flex-end;
+    }
+    .menu-btn {
+        display: block;
+        cursor: pointer;
+        user-select: none;
+        z-index: 102; 
+        position: relative; 
+    }
+    .menu-btn .asterisco-rojo {
+        transition: transform 0.3s ease-out;
+    }
+    header nav ul {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-in, visibility 0.4s linear;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white-prin);
+        border-top: 2px solid var(--dark-prin);
+        border-bottom: 2px solid var(--dark-prin);
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        gap: 0;
+    }
+    header nav li {
+        width: 100%;
+        text-align: center;
+    }
+    nav a {
+        display: block;
+        padding: 10px 0;
+    }
+    #menu-toggle:checked ~ .menu-btn .asterisco-rojo {
+        transform: rotate(90deg);
+    }
+    #menu-toggle:checked ~ ul {
+        max-height: 100vh;
+        opacity: 1;
+        visibility: visible;
+    }
+}

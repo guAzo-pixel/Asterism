@@ -1,0 +1,63 @@
+@import url(variables.css);
+
+/* 1. SECCIÓN Hero (parte principal)*/
+
+.hero{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--white-prin);
+}
+.hero__title{
+    font-family: var(--font-prin);
+    text-align: center;
+    font-size: 10em;
+    font-style: italic;
+    font-weight: bold;
+}
+.asterisco{
+    color: var(--white-prin);
+}
+
+/* 2. SECCIÓN de la propuesta de valor*/
+
+.worth{
+    margin: 0px;
+    background-image: url("../img/fondo.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-prin); 
+    text-align: center;
+    padding: 0 20px;
+}
+.worth__content {
+    max-width: 800px;
+}
+.worth__title {
+    font-family: var(--font-prin);
+    font-size: 4rem; 
+    font-style: italic;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--white-prin);
+}
+
+.worth__subtitle {
+    font-family: var(--font-pixel);
+    font-size: 2rem;
+    color: var(--grey-sec); 
+    margin-bottom: 40px;
+}
+.bienvenido{
+    color: var(--white-prin);
+}
+
+
+
+
