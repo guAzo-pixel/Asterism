@@ -8,10 +8,4 @@
     border-bottom: 2px solid var(--white-prin);
     background-color: var(--dark-prin);
 }
-.hero__aboutus h1{
-    margin-bottom: 50px;
-    color: var(--white-prin);
-}
-.hero__aboutus p{
-    color: blue;
-}
+

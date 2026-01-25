@@ -2,12 +2,16 @@
 
 /* 1. SECCIÓN Hero (parte principal)*/
 
-.hero{
+.section{
     min-height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid var(--white-prin);
+}
+
+.hero{
+    background-color: var(--red-prin);
 }
 .hero__title{
     font-family: var(--font-prin);
@@ -59,5 +63,13 @@
 }
 
 
+/* 3. SECiÓN de la prpuesta partners */
 
-
+.partners{
+    border-top: 2px solid var(--white-prin);
+}
+.partner__title{
+    text-align: center;
+    color: var(--white-prin);
+    max-width: 800px;
+}
