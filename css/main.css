@@ -1,3 +1,14 @@
-@import url('layout.css');
+/* 1. Configuración Global */
+@import url('variables.css');
+
+/* 2. Estructura común (Header, Footer, Grid) */
 @import url('layout/header.css');
-@import url('components.css')
+
+/* 3. Componentes reutilizables */
+@import url('components.css');
+
+/* 4. Estilos específicos de página */
+@import url('layout.css');
+
+/* Estilos especificos */
+@import url('aboutus/about.css');
