@@ -114,26 +114,3 @@
     font-size: 3rem;
     color: var(--red-prin);
 }
-
-
-
-@media (max-width: 768px) {
-    .problem__list {
-        grid-template-columns: 1fr; /* una única columna */
-    }
-    .hero__title {
-        margin-top: 15%;
-        
-        font-size: 5em;
-    }
-    .hero{
-        min-height: 50vh;
-    }
-    .worth__title{
-        font-size: 2.95em;
-    }
-    .problem__tittle{
-        margin-top: 10%;
-        font-size: 2.95em;
-    }
-}
